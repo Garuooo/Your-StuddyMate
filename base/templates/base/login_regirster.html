@@ -1,0 +1,76 @@
+{%extends 'main.html'%} 
+
+
+{%block content%}
+
+{%if page == "register"%}
+
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Register</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <h2 class="auth__tagline">Find your study partner</h2>
+
+        <form class="form" method="POST" action="">
+          <div class="form__group form__group">
+             <form method="POST" action="">
+              {% csrf_token %}
+              {{form.as_p}}
+            <input type="submit" value="Register" />
+           </form>
+
+        <div class="auth__action">
+          <p>Already have an account?</p>
+          <a href="{%url 'user-login'%}" class="btn btn--link">login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+{%else%}
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Login</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <h2 class="auth__tagline">Find your study partner</h2>
+
+    <form method="POST" action="">
+    {% csrf_token %}
+    <div class="form__group form__group">
+    <label for="email">Email:</label>
+    <input type="text" name="email" placeholder="Enter your email" />
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="Enter you password" />
+    <br>
+    <br>
+
+    <input type="submit" value="Login" />  
+    </div>
+  </form>
+
+        <div class="auth__action">
+          <p>Don't have an account?</p>
+          <a href="{%url 'register'%}" class="btn btn--link">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{%endif%}
+
+{%endblock%}
+
